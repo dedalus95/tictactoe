@@ -74,7 +74,9 @@ class Play
       (@@one == @@player_one.red && @@five == @@player_one.red && @@nine == @@player_one.red) ||
       (@@two == @@player_one.red && @@five == @@player_one.red && @@eight == @@player_one.red) ||
       (@@three == @@player_one.red && @@five == @@player_one.red && @@seven == @@player_one.red) ||
-      (@@three == @@player_one.red && @@six == @@player_one.red && @@nine == @@player_one.red)
+      (@@three == @@player_one.red && @@six == @@player_one.red && @@nine == @@player_one.red) ||
+      (@@four == @@player_one.red && @@five == @@player_one.red && @@six == @@player_one.red) ||
+      (@@seven == @@player_one.red && @@eight == @@player_one.red && @@nine == @@player_one.red)
     end
 
     def self.player_two_winner
@@ -84,7 +86,9 @@ class Play
       (@@one == @@player_two.blue && @@five == @@player_two.blue && @@nine == @@player_two.blue) ||
       (@@two == @@player_two.blue && @@five == @@player_two.blue && @@eight == @@player_two.blue) ||
       (@@three == @@player_two.blue && @@five == @@player_two.blue && @@seven == @@player_two.blue) ||
-      (@@three == @@player_two.blue && @@six == @@player_two.blue && @@nine == @@player_two.blue)
+      (@@three == @@player_two.blue && @@six == @@player_two.blue && @@nine == @@player_two.blue) ||
+      (@@four == @@player_two.blue && @@five == @@player_two.blue && @@six == @@player_two.blue) ||
+      (@@seven == @@player_two.blue && @@eight == @@player_two.blue && @@nine == @@player_two.blue)
     end
   
     def self.game_player_one
