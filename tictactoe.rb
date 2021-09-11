@@ -1,12 +1,12 @@
 
 
 module Display
-  def player_symbol_message(number)
-    "Player #{number}: choose a case(x/o)."
+  def player_symbol_message
+    "What symbol would you like as your marker?"
   end
   
   def symbol_validation_message(duplicate)
-    "Choose a case. It can't be #{duplicate}."
+    "It can't be #{duplicate}."
   end
 
   def player_name_message(number)
@@ -53,41 +53,44 @@ class Turn
     @board 
   end
 
-  def createPlayer(number, duplicate)
-  symbol = prompt_symbol(number)
+  def createPlayer(number, duplicate = nil)
   name = prompt_name(number)
+  symbol = symbol_input(duplicate)
+
   Player.new(name, symbol)
+
   end
 
   def initialize_players
     player_one = createPlayer(1)
     player_two = createPlayer(2, player_one.symbol)
 
-    p player_one.name
-    p player_two.name
+    p "player one name is #{player_one.name}"
+    p "player one symbol is #{player_one.symbol}"
+    p "player two name is #{player_two.name}"
+    p "player two name is #{player_two.symbol}"
   end
 
-  def prompt_symbol(number)
-    puts player_symbol_message(number)
-    symbol = gets.chomp
+  def symbol_input(duplicate)
+    puts symbol_prompt(duplicate)
+    input = gets.chomp
+    return input if input != duplicate && (input == 'x' || input == 'o')
+
+    symbol_input(duplicate)
   end
 
-  def symbols_not_equal(duplicate)
-    puts symbol_validation_message(duplicate)
-    symbol = gets.chomp
+  def symbol_prompt(duplicate)
+  puts player_symbol_message
+  puts symbol_validation_message(duplicate) if duplicate
   end
+
 
   def prompt_name(number)
     puts player_name_message(number)
     name = gets.chomp
   end
 
-  def validate_symbol
-  end
 
-  def read_names
-   
-  end
 end
 
 lo = Turn.new
